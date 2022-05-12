@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<h:form>
+
+		<p:outputPanel>
+			<p:outputLabel for="input1" value="Example input:" />
+			<p:inputNumber id="input1" value="#{caseOneController.input1}">
+				<p:ajax event="change"
+					listener="#{caseOneController.input1Changed()}" update="@form" />
+			</p:inputNumber>
+			<p:outputLabel value="#{caseOneController.lastUpdate}"
+				rendered="#{not empty caseOneController.lastUpdate}" />
+		</p:outputPanel>
+
+	</h:form>
+
+	<p:panel id="examplePanel" header="Title" widgetVar="ExamplePanel"
+		toggleable="true" style="max-width: 200px">
+			Text
+	</p:panel>
+
+	<p:draggable for="examplePanel" />
+
+</h:body>
+</html>

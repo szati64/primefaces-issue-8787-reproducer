@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<p:commandButton value="Open dialog" onclick="PF('exampleDlg').show()" />
+
+	<p:dialog header="Header" widgetVar="exampleDlg" minHeight="40"
+		width="350" modal="true">
+		<h:form>
+			<p:outputPanel>
+				<p:outputLabel for="input1" value="Example input:" />
+				<p:inputNumber id="input1" value="#{caseTwoController.input1}">
+					<p:ajax event="change"
+						listener="#{caseTwoController.input1Changed()}" update="@form" />
+				</p:inputNumber>
+				<p:outputLabel value="#{caseTwoController.lastUpdate}"
+					rendered="#{not empty caseTwoController.lastUpdate}" />
+			</p:outputPanel>
+		</h:form>
+	</p:dialog>
+
+</h:body>
+</html>
